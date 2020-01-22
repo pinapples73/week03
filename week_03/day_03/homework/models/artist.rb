@@ -3,7 +3,8 @@ require_relative('../db/sql_runner')
 
 class Artist
 
-  attr_reader :id, :artist_name
+  attr_reader :id
+  attr_accessor :artist_name
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -37,6 +38,18 @@ class Artist
     # return pg_result.map{|person| Artist.new(person)}
     artist_hash =  pg_result.first()
     return Artist.new(artist_hash)
+  end
+
+  def update()
+    sql = "UPDATE artists SET artist_name = $1 WHERE id = $2"
+    values = [@artist_name, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.delete(id)
+    sql = "DELETE FROM artists WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
   end
 
 end
