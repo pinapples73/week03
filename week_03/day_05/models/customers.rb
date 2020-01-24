@@ -33,7 +33,7 @@ class Customer
 
     if available_tickets > 0
       available_tickets -= 1
-      Customers.decrement_ticket_amount(screening_id, available_tickets)
+      Screening.update_tickets_left(available_tickets, screening_id)
 
       new_ticket = Ticket.new('customer_id' => @c_id, 'film_id' => film_id, 'screening_id' => screening_id)
 
@@ -47,6 +47,8 @@ class Customer
       returned_data = SqlRunner.run(sql, values)
       ticket_price = returned_data[0]['price'].to_i
       @funds -= ticket_price
+    else
+      p 'No tickets left'
     end
   end
 

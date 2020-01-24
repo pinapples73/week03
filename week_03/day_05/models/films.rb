@@ -38,7 +38,7 @@ class Film
 
   def film_screenings
     sql = 'SELECT * FROM screenings
-      WHERE film_screening_id = $1'
+      WHERE film_id = $1'
     values = [@f_id]
     returned_data = SqlRunner.run(sql, values)
     returned_data.map { |screening_data| Screening.new(screening_data) }

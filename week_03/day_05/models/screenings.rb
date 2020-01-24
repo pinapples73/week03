@@ -27,11 +27,10 @@ class Screening
     available_tickets
   end
 
-  def self.decrement_ticket_amount(screening_id, available_tickets)
-    sql = 'UPDATE screenings SET (tickets_left) = ($1)
+  def self.update_tickets_left(available_tickets, screening_id)
+    sql = 'UPDATE screenings SET tickets_left = $1
     WHERE s_id = $2'
     values = [available_tickets, screening_id]
-    result = SqlRunner.run(sql, values)
-    result
+    SqlRunner.run(sql, values)
   end
 end
