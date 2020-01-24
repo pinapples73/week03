@@ -28,19 +28,26 @@ class Customer
     returned_data.map { |film_data| Film.new(film_data) }
   end
 
-  def buy_ticket(film_id)
-    new_ticket = Ticket.new('customer_id' => @c_id, 'film_id' => film_id)
-    new_ticket.save
+  def buy_ticket(film_id, screening_id)
+    available_tickets = Screening.return_ticket_amount(screening_id)
 
-    sql = 'SELECT films.price FROM films
-    INNER JOIN tickets ON films.f_id = tickets.film_id
-    INNER JOIN customers ON customers.c_id = tickets.customer_id
-    WHERE tickets.t_id = $1'
-    values = [new_ticket.t_id]
-    returned_data = SqlRunner.run(sql, values)
-    ticket_price = returned_data[0]['price'].to_i
-    @funds -= ticket_price
-    @funds
+    if available_tickets > 0
+      available_tickets -= 1
+      Customers.decrement_ticket_amount(screening_id, available_tickets)
+
+      new_ticket = Ticket.new('customer_id' => @c_id, 'film_id' => film_id, 'screening_id' => screening_id)
+
+      new_ticket.save
+
+      sql = 'SELECT films.price FROM films
+      INNER JOIN tickets ON films.f_id = tickets.film_id
+      INNER JOIN customers ON customers.c_id = tickets.customer_id
+      WHERE tickets.t_id = $1'
+      values = [new_ticket.t_id]
+      returned_data = SqlRunner.run(sql, values)
+      ticket_price = returned_data[0]['price'].to_i
+      @funds -= ticket_price
+    end
   end
 
   def number_of_tickets
