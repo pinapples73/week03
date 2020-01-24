@@ -26,4 +26,13 @@ class Film
     returned_data = SqlRunner.run(sql, values)
     returned_data.map { |customer_data| Customer.new(customer_data) }
   end
+
+  def number_of_customers
+    sql = "SELECT COUNT(tickets.t_id) FROM tickets
+    INNER JOIN films ON films.f_id = tickets.film_id
+    WHERE tickets.film_id = $1"
+    values = [@f_id]
+    returned_data = SqlRunner.run(sql, values)
+    returned_data[0]['count'].to_i
+  end
 end
