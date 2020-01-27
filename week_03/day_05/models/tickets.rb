@@ -39,7 +39,7 @@ class Ticket
   end
 
   def self.show_tickets
-    sql = 'SELECT * FROM tickets'
+    sql = 'SELECT * FROM tickets ORDER BY customer_id'
     results = SqlRunner.run(sql)
     results.map { |ticket_data| Ticket.new(ticket_data) }
   end
