@@ -1,0 +1,8 @@
+<h2>Following students are in the list:</h2>
+
+<%for student_obj in @students%>
+  <p>Full Name: <%=student_obj.full_name()%></p>
+  <p>House: <%=student_obj.house_id %> </p>
+  <p>Age: <%=student_obj.age %> </p>
+  <hr>
+<% end %>
