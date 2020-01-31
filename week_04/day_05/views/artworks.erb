@@ -5,9 +5,13 @@
   <p>Details: <%= artwork.details %> </p>
   <p>Date Created: <%= artwork.date_created %> </p>
   <% for artist in @artists %>
-    <% if artist.id == artwork.artist_id %>
+    <% if artwork.artist_id == artist.id %>
       <p>Artist: <%= artist.first_name %> <%= artist.last_name %></p>
     <% end %>
   <% end %>
+  <p></p>
+
+
+
   <hr>
 <% end %>

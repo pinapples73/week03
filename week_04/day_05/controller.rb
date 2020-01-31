@@ -9,7 +9,7 @@ also_reload( 'models/*' )
 
 get '/index' do
   @artworks = Artwork.show_all
-  # p @artworks
+  @artists = Artist.show_all
   erb ( :artworks )
 end
 
@@ -19,8 +19,25 @@ get '/admin' do
   erb ( :admin )
 end
 
+get '/artist/add' do
+  erb(:new_artist_form)
+end
 
-get '/artist/:id' do
-  @result =  "#{Artist.find(params[:id]}"
-  erb(:result)
+post '/artist/add' do
+  @new_artist = Artist.new(params)
+  @new_artist.save
+  redirect '/admin'
+end
+
+post '/artist/:id/delete' do
+  artist_id = params[:id]
+  # Artwork.delete_by_artist(artist_id)
+  Artist.delete(artist_id)
+  redirect '/admin'
+end
+
+post '/artwork/:id/delete' do
+  artwork_id = params[:id]
+  Artwork.delete(artwork_id)
+  redirect '/admin'
 end

@@ -1,11 +1,26 @@
 <h2>Artists</h2>
 
+
+<p>
+  <form method="get" action="/artist/add">
+    <input type="submit"  value="Add Artist">
+  </form>
+</p>
+<hr>
+
 <%  for artist in @artists %>
   <p>Name: <%= artist.first_name %> <%= artist.last_name %></p>
+  <form method="post" action="/artist/<%= artist.id %>/delete">
+    <input type="submit"  value="Delete Artist">
+  </form>
   <hr>
 <% end %>
 
-<hr>
+<p>
+  <form method="get" action="/artist/add">
+    <input type="submit"  value="Add Artist">
+  </form>
+</p>
 <hr>
 
 
@@ -18,6 +33,9 @@
   <% for artist in @artists %>
     <% if artist.id == artwork.artist_id %>
       <p>Artist: <%= artist.first_name %> <%= artist.last_name %></p>
+      <form method="post" action="/artwork/<%= artwork.id %>/delete">
+        <input type="submit"  value="Delete Artwork">
+      </form>
     <% end %>
   <% end %>
   <hr>

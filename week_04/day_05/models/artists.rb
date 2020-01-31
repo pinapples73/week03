@@ -17,9 +17,9 @@ class Artist
     @id = returned_data[0]['id'].to_i
   end
 
-  def delete
+  def self.delete(id)
     sql = 'DELETE FROM artists WHERE id = $1'
-    values = [@id]
+    values = [id]
     SqlRunner.run(sql, values)
   end
 
@@ -42,5 +42,5 @@ class Artist
     return Artist.new( results.first )
   end
 
-  
+
 end
