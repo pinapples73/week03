@@ -1,0 +1,11 @@
+body {
+
+}
+
+p a {
+  color: pink
+}
+
+a:hover {
+  color: orange
+}

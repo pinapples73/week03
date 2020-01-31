@@ -1,0 +1,24 @@
+<h2>Artists</h2>
+
+<%  for artist in @artists %>
+  <p>Name: <%= artist.first_name %> <%= artist.last_name %></p>
+  <hr>
+<% end %>
+
+<hr>
+<hr>
+
+
+<h2>Artworks</h2>
+
+<%  for artwork in @artworks %>
+  <p>Title: <%= artwork.title %></p>
+  <p>Details: <%= artwork.details %> </p>
+  <p>Date Created: <%= artwork.date_created %> </p>
+  <% for artist in @artists %>
+    <% if artist.id == artwork.artist_id %>
+      <p>Artist: <%= artist.first_name %> <%= artist.last_name %></p>
+    <% end %>
+  <% end %>
+  <hr>
+<% end %>
