@@ -1,0 +1,50 @@
+<div class="content-flex2">
+
+  <div class="sub-title-flex">
+    <label>New Artwork</label>
+  </div>
+
+  <div class="edit-artist">
+
+
+    <form method="post" action="/artwork/add">
+      <p></p>
+      <label for="title">Title:</label>
+      <input id="title" type="text" name="title"  />
+      <p></p>
+      <label for="details">Details:</label>
+      <input id="details" type="text" name="details" />
+      <p></p>
+      <label for="date_created">Date created:</label>
+      <input id="date_created" type="text" name="date_created" />
+      <p></p>
+      <label for="arist-select">Assign an Artist:</label>
+      <select id="artist-select" name="artist_id">
+        <%for artist in @artists%>
+          <option value="<%=artist.id%>"><%=artist.last_name.capitalize%>, <%=artist.first_name.capitalize%> </option>
+        <% end %>
+      </select>
+      <p></p>
+      <label for="cat-select">Assign a Category:</label>
+      <select id="cat-select" name="category_id">
+        <%for category in @categories%>
+          <option value="<%=category.id%>"><%=category.type.capitalize%></option>
+        <% end %>
+      </select>
+      <p></p>
+      <input type="submit"  value="Add Artwork">
+    </form>
+
+  </div>
+
+  <div class="edit-artist">
+    <form method="post" action="/category/add">
+      <p></p>
+      <label for="type">Add New Category:</label>
+      <input id="type" type="text" name="type"  />
+      <input type="submit"  value="Add Catergory">
+    </form>
+  </div>
+
+
+</div>

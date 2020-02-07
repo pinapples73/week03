@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Art Gallery</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
+  <link rel="stylesheet" type="text/css" href="/styles/singleimage.css">
+  <link rel="stylesheet" type="text/css" href="/styles/adminactions.css">
+  <link rel="stylesheet" type="text/css" href="/styles/home.css">
+</head>
+
+<body>
+  <main>
+
+    <div class="title-flex">
+      <div class="title-flex-white">
+        WORKS OF WONDER
+      </div>
+      <div class="title-flex-red">
+        The Imagination Art Gallery
+      </div>
+
+    </div>
+
+
+    <nav class="nav-flex">
+      <a href="/index">Home</a>
+      <a href="/artwork/all">Artwork</a>
+      <a href="/admin">Admin</a>
+    </nav>
+
+    <section>
+      <%= yield %>
+    </section>
+  </main>
+</body>
+</html>

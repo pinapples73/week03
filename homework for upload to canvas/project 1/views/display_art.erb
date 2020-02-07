@@ -1,0 +1,54 @@
+<div class="content-flex">
+  <div class="sub-title-flex">
+    <label><%=@artwork.title %></label>
+  </div>
+
+
+  <div class="single_image_container">
+
+    <div class="large-image">
+      <img src="/images/artworks/<%= @artwork.id%>.png" alt="wot no image"/>
+    </div>
+
+    <div class="full-details">
+      <div class="top-detail">
+        <div class="main-details">
+          <% for artist in @artists%>
+            <% if @artwork.artist_id == artist.id %>
+              <p>ARTIST: <%=artist.first_name%> <%=artist.last_name%></p>
+            <%end%>
+          <%end%>
+          <p>MEDIA: <%=@artwork.details%></p>
+          <% for category in @categories%>
+            <% if @artwork.category_id == category.id %>
+              <p>CATEGORY: <%=category.type%></p>
+            <%end%>
+          <%end%>
+        </div>
+        <div class="artist-image">
+          <% for artist in @artists%>
+            <% if @artwork.artist_id == artist.id %>
+              <img src="/images/artists/<%= artist.first_name.downcase%>-<%=artist.last_name.downcase%>.png"/>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+      <div class="blurb">
+        <p>Aliquam mauris tortor, vestibulum ac orci vulputate, hendrerit posuere mauris. Quisque sed sem egestas, tempus ex in, vulputate lacus. Maecenas quis tortor at elit accumsan semper. Duis ut odio venenatis, tempor enim nec, auctor ante. Curabitur id sollicitudin quam. Mauris porttitor lorem consequat, malesuada nisl sed, maximus justo. Phasellus porta metus risus, at ullamcorper lectus gravida in. Pellentesque dui elit, fringilla et lectus sit amet, congue bibendum metus. Mauris vulputate, ipsum non euismod bibendum, nibh sapien congue orci, id maximus dui enim eu tortor. Duis ac neque vitae tellus pretium tempus. Praesent rutrum nulla tortor, id vulputate magna pretium nec. Nam nec eleifend velit. Mauris lacus purus, rutrum a viverra quis, ullamcorper quis diam. Sed sit amet viverra lectus, vitae gravida nibh.</p>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+</div>

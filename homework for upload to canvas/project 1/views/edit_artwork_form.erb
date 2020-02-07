@@ -1,0 +1,38 @@
+<div class="content-flex2">
+
+  <div class="sub-title-flex">
+    <label>Edit Artwork</label>
+  </div>
+
+  <div class="edit-artist">
+
+
+    <form method="post" action="/artwork/<%=@artwork.id%>/update">
+      <label for="title">Title:</label>
+      <input id="title" type="text" name="title" value="<%= @artwork.title %>" />
+      <p></p>
+      <label for="details">Details:</label>
+      <input id="details" type="text" name="details" value="<%= @artwork.details%>" />
+      <p></p>
+      <label for="date_created">Date created:</label>
+      <input id="date_created" type="text" name="date_created" value="<%= @artwork.date_created %>"/>
+      <p></p>
+      <label for="arist-select">Assign an Artist:</label>
+      <select id="artist-select" name="artist_id">
+        <%for artist in @artists%>
+          <option <%= "selected" if @artwork.artist_id == artist.id %> value="<%=artist.id%>"><%=artist.last_name.capitalize%>, <%=artist.first_name.capitalize%>  </option>
+        <% end %>
+      </select>
+      <p></p>
+      <label for="cat-select">Assign a Category:</label>
+      <select id="cat-select" name="category_id">
+        <%for category in @categories%>
+          <option <%= "selected" if @artwork.category_id == category.id %> value="<%=category.id%>"><%=category.type%></option>
+        <% end %>
+      </select>
+      <p></p>
+      <input type="submit"  value="Update Artwork">
+    </form>
+
+  </div>
+</div>

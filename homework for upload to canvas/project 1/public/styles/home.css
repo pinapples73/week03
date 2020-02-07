@@ -1,0 +1,63 @@
+.break {
+    width: 100%; /* width of container */
+    height: 50px; /* height of container */
+    background: #231F20;
+}
+
+
+.cropped {
+    width: 100%; /* width of container */
+    height: 500px; /* height of container */
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.cropped img {
+  filter:brightness(30%);
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.top-left {
+  position: absolute;
+  top: 300px;
+  left: 100px;
+  font-size: 5em;
+  color: #E6E8E6;
+}
+
+.bottom-right {
+  position: absolute;
+  top: 400px;
+  left: 400px;
+  font-size: 6em;
+  color: #F7F7FF;
+}
+
+.title-flex{
+  display:flex;
+  font-family: 'Righteous', cursive;
+  /* font-size: 1em; */
+  height: 100px;
+  justify-content:center;
+  align-content: center;
+  background-color: #231F20;
+  color: #E6E8E6;
+}
+
+.title-flex-white {
+  color: #E6E8E6;
+  font-size: 4em;
+}
+.title-flex-red {
+  color: #E7E247;
+  font-size: 2em;
+  align-self: baseline;
+}
+
+
+.title-flex img {
+  display:flex;
+  object-fit: scale-down;
+}

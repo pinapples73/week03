@@ -1,0 +1,15 @@
+<div class="break">
+
+</div>
+
+<div class="cropped">
+  <img src="/images/artworks/<%=@featured_artist.id%>.png" alt="">
+  <div class="top-left">Featured Artist</div>
+  <div class="bottom-right">
+    <% for artist in @artists %>
+      <% if @featured_artist.artist_id == artist.id %>
+        <%= artist.first_name %> <%= artist.last_name %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
