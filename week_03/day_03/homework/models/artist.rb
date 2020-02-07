@@ -35,7 +35,6 @@ class Artist
     sql = "SELECT * FROM artists WHERE id = $1"
     values = [artist_id]
     pg_result = SqlRunner.run(sql, values)
-    # return pg_result.map{|person| Artist.new(person)}
     artist_hash =  pg_result.first()
     return Artist.new(artist_hash)
   end
